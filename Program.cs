@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -15,9 +15,10 @@ internal class Program
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("======= Message Encryptor =======");
-            Console.WriteLine("1. Encrypt...");
-            Console.WriteLine("2. Decrypt...");
-            Console.WriteLine("0. Exit...\n");
+            Console.WriteLine("1 -> Encrypt...");
+            Console.WriteLine("2 -> Decrypt...");
+            Console.WriteLine("3 -> Quick Encrypt. . .");
+            Console.WriteLine("0 -> Exit...\n");
             Console.ResetColor();
 
             string choice = Console.ReadLine();
@@ -39,7 +40,13 @@ internal class Program
 
                 sessionMessages.Add(paragraph);
 
-                File.AppendAllText(file, paragraph + Environment.NewLine);
+                if(File.Exists(file))
+                {
+                    File.AppendAllText(file, paragraph + Environment.NewLine);
+                } else
+                {
+                    Console.WriteLine("File does not exist!");
+                }
             }
             else if (choice == "2")
             {
@@ -74,6 +81,13 @@ internal class Program
             {
                 Console.WriteLine("Goodbye");
                 break;
+            }
+            else if(choice == "3")
+            {   // this is for quick encryption with no logging.
+                Console.Write("Encrypt text: ");
+                string input = Console.ReadLine();
+                string encrypted = Encrypt(input);
+                Console.WriteLine(encrypted);
             }
             else
             {
