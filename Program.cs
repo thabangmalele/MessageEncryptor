@@ -85,8 +85,7 @@ internal class Program
             else if(choice == "3")
             {   // this is for quick encryption with no logging.
                 Console.Write("Encrypt text: ");
-                string input = Console.ReadLine();
-                string encrypted = Encrypt(input);
+                string encrypted = Encrypt(Console.ReadLine());
                 Console.WriteLine(encrypted);
             }
             else
@@ -123,3 +122,4 @@ internal class Program
         return sb.ToString();
     }
 }
+
