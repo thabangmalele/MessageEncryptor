@@ -15,9 +15,10 @@ internal class Program
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("======= Message Encryptor =======");
-            Console.WriteLine("1 -> Encrypt...");
-            Console.WriteLine("2 -> Decrypt...");
+            Console.WriteLine("1 -> Encrypt and log...");
+            Console.WriteLine("2 -> Decrypt from log...");
             Console.WriteLine("3 -> Quick Encrypt. . .");
+            Console.WriteLine("4 -> Quick Decrypt. . .");
             Console.WriteLine("0 -> Exit...\n");
             Console.ResetColor();
 
@@ -88,6 +89,12 @@ internal class Program
                 string encrypted = Encrypt(Console.ReadLine());
                 Console.WriteLine(encrypted);
             }
+            else if(choice == "4")
+            {   // quick decrypt, to decrypt text away from the database.
+                Console.Write("Decrypt text: ");
+                string decrypted = Decrypt(Console.ReadLine());
+                Console.WriteLine(decrypted);
+            }
             else
             {
                 Console.WriteLine("Invalid choice. Try again.\n");
@@ -122,4 +129,3 @@ internal class Program
         return sb.ToString();
     }
 }
-
